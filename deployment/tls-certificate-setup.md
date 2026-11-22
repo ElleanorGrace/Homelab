@@ -111,4 +111,4 @@ Confirm SSL/TLS Mode: Full (Strict)
 - Services are reachable through Cloudflare.
 
 ## Related Documentation
-- [architecture/tls-and-certificate-management.md](architecture/tls-and-certificate-management.md)
+- [architecture/tls-and-certificate-management.md](../architecture/tls-and-certificate-management.md)
