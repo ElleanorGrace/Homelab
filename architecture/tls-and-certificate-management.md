@@ -91,3 +91,4 @@ Responsibilities:
 
 ## Related Documentation
 - [deployment/tls-certificate-setup.md](../deployment/tls-certificate-setup.md)
+- [runbook/replace-tls-certificate.md](../runbook/replace-tls-certificate.md)
