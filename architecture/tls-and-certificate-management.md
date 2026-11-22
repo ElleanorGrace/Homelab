@@ -90,4 +90,4 @@ Responsibilities:
 - Security controls provided by Cloudflare do not replace the need for proper access controls, system hardening, monitoring, and regular maintenance within the homelab environment.
 
 ## Related Documentation
-- [deployment/tls-and-certificate-management.md](../deployment/tls-and-certificate-management.md)
+- [deployment/tls-certificate-setup.md](../deployment/tls-certificate-setup.md)
