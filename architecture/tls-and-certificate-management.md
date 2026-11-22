@@ -88,3 +88,6 @@ Responsibilities:
 - Misconfiguration of Cloudflare SSL/TLS settings may reduce certificate validation or weaken the intended security posture.
 - The long lifetime of Cloudflare Origin Certificates reduces maintenance requirements but increases the importance of protecting private key material.
 - Security controls provided by Cloudflare do not replace the need for proper access controls, system hardening, monitoring, and regular maintenance within the homelab environment.
+
+## Related Documentation
+- [deployment/tls-and-certificate-management.md](../deployment/tls-and-certificate-management.md)
