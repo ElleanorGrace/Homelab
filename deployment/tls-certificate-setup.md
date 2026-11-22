@@ -102,7 +102,8 @@ Verify the following:
 
 ### Cloudflare Validation
 
-Confirm SSL/TLS Mode: Full (Strict)
+- SSL/TLS Mode is set to Full (Strict).
+- DNS records remain proxied through Cloudflare.
 
 ### Origin Validation
 
@@ -112,3 +113,4 @@ Confirm SSL/TLS Mode: Full (Strict)
 
 ## Related Documentation
 - [architecture/tls-and-certificate-management.md](../architecture/tls-and-certificate-management.md)
+- [runbook/replace-tls-certificate.md](../runbook/replace-tls-certificate.md)
