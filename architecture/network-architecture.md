@@ -19,6 +19,7 @@ The homelab currently operates on a flat network topology where user devices, se
 ### High-Level Topology
 ```mermaid
 flowchart LR
+    Internet --> Gameservers[Pterodactyl Game Servers]
     Internet --> Cloudflare
     Cloudflare --> Proxy[Nginx Proxy Manager]
     Proxy --> Emby
@@ -27,7 +28,6 @@ flowchart LR
     Public[Public Wifi] --> Tailscale
     Tailscale --> Local["Local Network"]
     Tailscale --> Pi[Pi-hole Filtering] --> WWW[Internet]
-
 ```
 
 ## Core Components
@@ -83,7 +83,19 @@ Examples include:
 - Emby
 - Foundry Virtual Tabletop
 - Pterodactyl Panel
+### Exception: Game Server Traffic
 
+While the Pterodactyl management panel is published through Cloudflare and Nginx Proxy Manager, individual game servers are exposed through dedicated port forwarding and do not traverse the reverse proxy.
+
+Traffic follows the path:
+
+```text
+Player
+    ->
+Router Port Forward
+    ->
+Game Server
+```
 This architecture centralizes externally accessible traffic through a single reverse proxy.
 
 ## Internal Service Flow
@@ -226,6 +238,44 @@ The network architecture is guided by the following principles:
 - Separation of public and administrative services
 - Operational simplicity and maintainability
 - Security through network segmentation
+## Security Considerations
 
+### Current Architecture
+
+#### Strengths
+
+- Publicly accessible web services are centralized behind Nginx Proxy Manager, reducing the number of exposed management interfaces.
+- Cloudflare provides publicly trusted TLS certificates, proxy services, traffic filtering, and DDoS mitigation.
+- Tailscale provides encrypted remote access without requiring direct exposure of administrative services.
+- Pi-hole provides centralized DNS filtering and visibility into network DNS activity.
+- Infrastructure services such as Pi-hole and UniFi Controller are not intended for direct public access.
+
+#### Risks and Limitations
+
+- The current flat network topology allows user devices, servers, and IoT devices to reside within the same trust boundary.
+- A compromised server or container may be capable of initiating connections to trusted user devices.
+- A compromised IoT device may be capable of communicating with other devices on the local network.
+- Publicly exposed game server ports bypass the reverse proxy architecture and are directly accessible from the internet.
+- Security controls rely heavily on application-level security and host hardening rather than network segmentation.
+
+### Planned Architecture
+
+#### Security Improvements
+
+- VLAN segmentation establishes separate trust boundaries for users, servers, and IoT devices.
+- Trusted Devices, Servers, and IoT systems can be governed by independent firewall policies.
+- Lateral movement opportunities are significantly reduced in the event of a compromised server or IoT device.
+- Centralized ingress remains restricted to Nginx Proxy Manager for web-based services.
+- Tailscale continues to provide secure remote access while reducing reliance on internet-exposed administrative interfaces.
+- IoT devices receive network access only to approved services such as media streaming and DNS resolution.
+- Pi-hole continues to provide centralized DNS filtering and monitoring across all VLANs.
+
+#### Remaining Risks
+
+- Publicly exposed game server ports remain directly accessible from the internet and must be secured through application updates and firewall management.
+- Misconfigured firewall policies may unintentionally allow communication between VLANs.
+- Cloudflare outages or configuration issues may impact access to internet-facing applications.
+- A compromise of the Unraid host would affect systems across multiple services regardless of VLAN segmentation.
+- Network segmentation reduces risk but does not eliminate the need for patch management, monitoring, backups, and endpoint security.
 ## Related Documentation
 - [projects/vlan-segmentation.md](../projects/vlan-segmentation.md)
