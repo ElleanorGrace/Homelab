@@ -10,7 +10,7 @@ This repository is actively maintained and serves as both a documentation projec
 
 | Documentation Area | Status |
 |-------------------|--------|
-| Architecture Overview |  |
+| Architecture Overview | Complete |
 | TLS & Certificate Management | Complete |
 | Network Design | In Progress |
 | DNS & Ingress Architecture | Planned |
