@@ -2,19 +2,21 @@
 
 This repository documents a self-hosted homelab environment built to develop practical experience in systems administration, networking, infrastructure management, containerized applications, and cybersecurity concepts.
 
-The environment supports media services, gaming services, secure remote access, network management, and security-focused learning activities while serving as a platform for hands-on technical skill development.
+The environment serves as a platform for designing, documenting, and operating production-inspired infrastructure while emphasizing security, remote access control, network segmentation, and service reliability.
 
 ## Project Status
 
 This repository is actively maintained and serves as both a documentation project and technical portfolio.
 
-| Documentation Area | Status |
-|-------------------|--------|
-| Architecture Overview | Complete |
-| TLS & Certificate Management | Complete |
-| Network Design | In Progress |
-| DNS & Ingress Architecture | Planned |
-| Runbooks | Planned|
+| Area | Status |
+|--------|--------|
+| Architecture Documentation | Complete |
+| Service Documentation | Complete |
+| Deployment Documentation | In Progress |
+| Operational Runbooks | In Progress |
+| Network Segmentation Project | In Progress |
+| Backup Strategy | Planned |
+| Monitoring & Alerting | Planned |
 
 ## Documentation Structure
 
@@ -26,13 +28,17 @@ High-level design documentation and architectural decisions.
 
 Documentation for deployed services and supporting infrastructure.
 
+### Deployments
+
+Step-by-step implementation, first-time setup, and environment rebuild procedures. Deployment documentation is intended to allow services or infrastructure components to be recreated consistently from a known baseline.
+
 ### Runbooks
 
 Operational procedures, maintenance tasks, troubleshooting workflows, and recovery documentation.
 
-### Diagrams
+### Projects
 
-Architecture and topology diagrams used throughout the documentation.
+Major infrastructure initiatives, upgrades, and implementation plans.
 
 ## Guiding Principles
 
@@ -41,6 +47,12 @@ Architecture and topology diagrams used throughout the documentation.
 - Centralize ingress and access management.
 - Document systems and processes to ensure repeatability.
 - Treat the homelab as a production-like learning environment.
+
+## Planned Improvements
+
+- VLAN-based network segmentation
+- Centralized backup strategy
+- Monitoring and alerting platform
 
 ## Disclaimer
 
